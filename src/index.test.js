@@ -28,8 +28,12 @@ test('flattens triply nested array', () => {
   expect(flatten([1, 2, [3, [[], 4], 5], 6])).toEqual([1, 2, 3, 4, 5, 6]);
 });
 
-test('flattens triply nested array', () => {
+test('flattens example input from Josh', () => {
   expect(flatten([[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []])).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+});
+
+test('flattens very deeply nested array', () => {
+  expect(flatten([1, 2, [3, [[[[[[[[[300], [301], []]]]]]]], 4], 5], 6])).toEqual([1, 2, 3, 300, 301, 4, 5, 6]);
 });
 
 test('returns empty array as itself', () => {
