@@ -1,12 +1,17 @@
 const flatten = (inputArray) => {
   let output = [];
-  inputArray.forEach(element => {
-    if (typeof element === 'number') {
-      output.push(element);
-    } else if (element.length) {
-      output.push(element[0]);
-    }
-  })
+
+  const pushToOutput = (array) => {
+    array.forEach(element => {
+      if (typeof element === 'number') {
+        output.push(element);
+      } else if (element.length) {
+        return pushToOutput(element);
+      }
+    });
+  }
+
+  pushToOutput(inputArray);
   return output;
 }
 
