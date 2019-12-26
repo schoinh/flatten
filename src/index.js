@@ -1,18 +1,34 @@
 const flatten = (inputArray) => {
-  let output = [];
-
-  const pushToOutput = (array) => {
+  const pushToOutput = (array, accumulate) => {
     array.forEach(element => {
       if (typeof element === 'number') {
-        output.push(element);
+        accumulate.push(element);
       } else if (element.length) {
-        return pushToOutput(element);
+        return pushToOutput(element, accumulate);
       }
     });
+    return accumulate;
   }
-
-  pushToOutput(inputArray);
-  return output;
+  return pushToOutput(inputArray, []);
 }
+
+// Original way
+
+// const flatten = (inputArray) => {
+//   let output = [];
+
+//   const pushToOutput = (array) => {
+//     array.forEach(element => {
+//       if (typeof element === 'number') {
+//         output.push(element);
+//       } else if (element.length) {
+//         return pushToOutput(element);
+//       }
+//     });
+//   }
+
+//   pushToOutput(inputArray);
+//   return output;
+// }
 
 export default flatten;
