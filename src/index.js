@@ -1,3 +1,5 @@
+// ----- Most concise way
+
 const flatten = (array, output = []) => {
   array.forEach(element => {
     if (typeof element === 'number') {
