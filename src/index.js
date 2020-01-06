@@ -1,18 +1,31 @@
-const flatten = (inputArray) => {
-  const pushToOutput = (array, accumulate) => {
-    array.forEach(element => {
-      if (typeof element === 'number') {
-        accumulate.push(element);
-      } else if (element.length) {
-        return pushToOutput(element, accumulate);
-      }
-    });
-    return accumulate;
-  }
-  return pushToOutput(inputArray, []);
+const flatten = (array, output = []) => {
+  array.forEach(element => {
+    if (typeof element === 'number') {
+      output.push(element);
+    } else if (element.length) {
+      flatten(element, output);
+    }
+  });
+  return output;
 }
 
-// Original way
+// ----- Second way with accumulator
+
+// const flatten = (inputArray) => {
+//   const pushToOutput = (array, accumulate) => {
+//     array.forEach(element => {
+//       if (typeof element === 'number') {
+//         accumulate.push(element);
+//       } else if (element.length) {
+//         return pushToOutput(element, accumulate);
+//       }
+//     });
+//     return accumulate;
+//   }
+//   return pushToOutput(inputArray, []);
+// }
+
+// ----- Original way
 
 // const flatten = (inputArray) => {
 //   let output = [];
